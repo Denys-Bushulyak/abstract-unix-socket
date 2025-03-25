@@ -1,0 +1,7 @@
+/workspaces/interview/fsharp/bin/Release/net9.0/fsharp.fable-temp.deps.json
+/workspaces/interview/fsharp/bin/Release/net9.0/fsharp.fable-temp.runtimeconfig.json
+/workspaces/interview/fsharp/obj/Release/net9.0/fsharp.fable-temp.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/interview/fsharp/obj/Release/net9.0/fsharp.fable-temp.AssemblyInfoInputs.cache
+/workspaces/interview/fsharp/obj/Release/net9.0/fsharp.fable-temp.AssemblyInfo.cs
+/workspaces/interview/fsharp/obj/Release/net9.0/fsharp.f.F5892F72.Up2Date
+/workspaces/interview/fsharp/obj/Release/net9.0/fsharp.fable-temp.genruntimeconfig.cache
