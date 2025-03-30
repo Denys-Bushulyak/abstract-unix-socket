@@ -1,11 +1,11 @@
 init:
 	sudo apt update -y
 	sudo apt install -y socat
-server_rust:
+server:
 	cd rust && cargo run --bin server
-client_rust:
+rust-client:
 	cd rust && cargo run --bin client
-fshart_client:
+net-client:
 	cd fsharp && dotnet run
-socat_client:
-	echo "Hello" | socat - ABSTRACT-CONNECT:hidden
+socat:
+	echo -n "Hello" | socat - ABSTRACT-CONNECT:hidden

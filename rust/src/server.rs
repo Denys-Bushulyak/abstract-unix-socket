@@ -1,61 +1,33 @@
 use std::error::Error;
-use std::fs::File;
-use std::io::Read;
 use std::os::linux::net::SocketAddrExt;
-use std::os::unix::net::{SocketAddr, UnixListener};
-use std::path::PathBuf;
-use std::str::FromStr;
-use std::sync::Arc;
-use std::thread::spawn;
+use std::os::unix::net::{SocketAddr, UnixListener, UnixStream};
 
-use quick_js::{ContextError, ExecutionError};
+use shared::{read_data, send_data};
+mod shared;
 
-const UNIX_SOCKET_NAME: &str = "hidden";
-const PROGRAM_JS_FILE: &str = "fsharp/Program.js";
+const READER_BUFFER_SIZE: usize = 1024;
 
-type ProgramScript = String;
+fn handle(mut stream: UnixStream) {
+    let data = read_data(&mut stream, READER_BUFFER_SIZE);
 
-#[derive(Debug)]
-enum ExecutionProblems {
-    CanNotEvalProgramCode(ProgramScript, ExecutionError),
-    CreationContextProblem(ContextError),
-    CanNotCallFunction(ExecutionError),
-    CanNotFindProgramFile,
+    println!(
+        "Received from client: {:#?}",
+        String::from_utf8(data.clone()).unwrap()
+    );
+
+    send_data(&mut stream, &data);
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let addr = SocketAddr::from_abstract_name(UNIX_SOCKET_NAME)?;
+    let addr = SocketAddr::from_abstract_name(b"hidden")?;
     let listener = UnixListener::bind_addr(&addr)?;
 
     for stream in listener.incoming() {
-        spawn(move || match stream {
-            Ok(mut data) => {
-                let path_buf = PathBuf::from_str(PROGRAM_JS_FILE).unwrap();
-                let mut file = File::open(path_buf).unwrap();
-                let mut buffer = String::new();
-                file.read_to_string(&mut buffer).unwrap();
-                let program = regex::Regex::new(r#"export\s*\{[^}]*\};"#)
-                    .unwrap()
-                    .replace(&buffer, "");
-                let mut buf = String::new();
-                let _ = data.read_to_string(&mut buf);
-
-                let result = quick_js::Context::new()
-                    .map_err(ExecutionProblems::CreationContextProblem)
-                    .and_then(|vm| {
-                        vm.eval(&program).map(|_| vm).map_err(|e: ExecutionError| {
-                            ExecutionProblems::CanNotEvalProgramCode(program.to_string(), e)
-                        })
-                    })
-                    .and_then(|vm| {
-                        vm.call_function("handle", vec![buf])
-                            .map_err(|e| ExecutionProblems::CanNotCallFunction(e))
-                    });
-
-                dbg!(result);
-            }
-            Err(e) => eprintln!("{:?}", e),
-        });
+        stream
+            .map(|stream| {
+                std::thread::spawn(|| handle(stream));
+            })
+            .unwrap();
     }
 
     Ok(())
