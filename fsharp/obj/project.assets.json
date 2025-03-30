@@ -2,26 +2,6 @@
   "version": 3,
   "targets": {
     "net9.0": {
-      "Fable.Core/4.5.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Fable.Core.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/Fable.Core.dll": {
-            "related": ".xml"
-          }
-        },
-        "contentFiles": {
-          "contentFiles/any/netstandard2.0/CHANGELOG.md": {
-            "buildAction": "Content",
-            "codeLanguage": "any",
-            "copyToOutput": false
-          }
-        }
-      },
       "FSharp.Core/9.0.201": {
         "type": "package",
         "compile": {
@@ -79,24 +59,6 @@
     }
   },
   "libraries": {
-    "Fable.Core/4.5.0": {
-      "sha512": "ZcX8XN5sQZGCbrS8VYnsa/ynhrCBfpDyqDkTl33GTXOpgfKibxoq0+W0hCSbRzuukVNoLtqGL/B6+8yTNDXbNA==",
-      "type": "package",
-      "path": "fable.core/4.5.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE",
-        "README.md",
-        "content/CHANGELOG.md",
-        "contentFiles/any/netstandard2.0/CHANGELOG.md",
-        "fable.core.4.5.0.nupkg.sha512",
-        "fable.core.nuspec",
-        "fable_logo.png",
-        "lib/netstandard2.0/Fable.Core.dll",
-        "lib/netstandard2.0/Fable.Core.xml"
-      ]
-    },
     "FSharp.Core/9.0.201": {
       "sha512": "Ozq4T0ISTkqTYJ035XW/JkdDDaXofbykvfyVwkjLSqaDZ/4uNXfpf92cjcMI9lf9CxWqmlWHScViPh/4AvnWcw==",
       "type": "package",
@@ -142,30 +104,29 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "FSharp.Core >= 9.0.201",
-      "Fable.Core >= 4.5.0"
+      "FSharp.Core >= 9.0.201"
     ]
   },
   "packageFolders": {
-    "/home/vscode/.nuget/packages/": {}
+    "/Users/denys/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/workspaces/interview/fsharp/fsharp.fsproj",
+      "projectUniqueName": "/Users/denys/Projects/interview/fsharp/fsharp.fsproj",
       "projectName": "fsharp",
-      "projectPath": "/workspaces/interview/fsharp/fsharp.fsproj",
-      "packagesPath": "/home/vscode/.nuget/packages/",
-      "outputPath": "/workspaces/interview/fsharp/obj/",
+      "projectPath": "/Users/denys/Projects/interview/fsharp/fsharp.fsproj",
+      "packagesPath": "/Users/denys/.nuget/packages/",
+      "outputPath": "/Users/denys/Projects/interview/fsharp/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/vscode/.nuget/NuGet/NuGet.Config"
+        "/Users/denys/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
-        "/usr/share/dotnet/sdk/9.0.202/FSharp/library-packs": {},
+        "/usr/local/share/dotnet/sdk/9.0.200/FSharp/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -190,11 +151,6 @@
             "target": "Package",
             "version": "[9.0.201, )",
             "generatePathProperty": true
-          },
-          "Fable.Core": {
-            "target": "Package",
-            "version": "[4.5.0, )",
-            "generatePathProperty": true
           }
         },
         "imports": [
@@ -213,7 +169,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

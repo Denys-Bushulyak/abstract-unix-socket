@@ -1,26 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "/workspaces/interview/fsharp/fsharp.fsproj": {}
+    "/Users/denys/Projects/interview/fsharp/fsharp.fsproj": {}
   },
   "projects": {
-    "/workspaces/interview/fsharp/fsharp.fsproj": {
+    "/Users/denys/Projects/interview/fsharp/fsharp.fsproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/workspaces/interview/fsharp/fsharp.fsproj",
+        "projectUniqueName": "/Users/denys/Projects/interview/fsharp/fsharp.fsproj",
         "projectName": "fsharp",
-        "projectPath": "/workspaces/interview/fsharp/fsharp.fsproj",
-        "packagesPath": "/home/vscode/.nuget/packages/",
-        "outputPath": "/workspaces/interview/fsharp/obj/",
+        "projectPath": "/Users/denys/Projects/interview/fsharp/fsharp.fsproj",
+        "packagesPath": "/Users/denys/.nuget/packages/",
+        "outputPath": "/Users/denys/Projects/interview/fsharp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/vscode/.nuget/NuGet/NuGet.Config"
+          "/Users/denys/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "/usr/share/dotnet/sdk/9.0.202/FSharp/library-packs": {},
+          "/usr/local/share/dotnet/sdk/9.0.200/FSharp/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,11 +45,6 @@
               "target": "Package",
               "version": "[9.0.201, )",
               "generatePathProperty": true
-            },
-            "Fable.Core": {
-              "target": "Package",
-              "version": "[4.5.0, )",
-              "generatePathProperty": true
             }
           },
           "imports": [
@@ -68,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

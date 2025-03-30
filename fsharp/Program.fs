@@ -12,33 +12,21 @@ let handle message =
         Message = message 
     } 
 
-let abstractPath = "../hidden"
-
-let useClient protocolType = 
+let useClient path socketType protocolType = 
+    
+    let clientSocket = new Socket(AddressFamily.Unix, socketType, protocolType)
+    let endpoint = new UnixDomainSocketEndPoint(path);
+    clientSocket.Connect(endpoint);
+    printfn "Connected to server!"
     printfn $"{protocolType}"
-    
-    try
-        let clientSocket = new Socket(AddressFamily.Unix, SocketType.Stream, protocolType)
-        let endpoint = new UnixDomainSocketEndPoint(abstractPath);
-        clientSocket.Connect(endpoint);
-        printfn "Connected to server!"
-    
-        let message = "Hello from client!"
-        let data = Encoding.UTF8.GetBytes(message)
-        clientSocket.Send data |> printfn "Send bytes: {%i}"
-    
-        clientSocket.Close()
-    with
-    | e -> printfn "Protocol does not works {%A}. Exception message: {%s}" protocolType e.Message
 
+    let message = "Hello from client!"
+    let data = Encoding.UTF8.GetBytes(message)
+    clientSocket.Send data |> printfn "Send bytes: {%i}"
+
+    clientSocket.Close()
+    
     ()
 
+useClient "\x00hidden" SocketType.Stream  ProtocolType.Unspecified
 
-useClient ProtocolType.Tcp
-useClient ProtocolType.Udp
-useClient ProtocolType.IP
-useClient ProtocolType.IPv4
-useClient ProtocolType.IPv6
-useClient ProtocolType.Raw
-useClient ProtocolType.Unknown
-useClient ProtocolType.Unspecified
